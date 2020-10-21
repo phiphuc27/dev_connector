@@ -1,1 +1,3 @@
-# dev_connector
+# Dev Connector
+
+###### Social network for developers application
