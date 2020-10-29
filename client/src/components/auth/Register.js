@@ -5,7 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 
-const Register = ({ isAuthenticated, ...props }) => {
+const Register = ({ isAuthenticated, registerDispatch, setAlertDispatch }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -21,9 +21,9 @@ const Register = ({ isAuthenticated, ...props }) => {
     const onSubmit = (e) => {
         e.preventDefault();
         if (password !== password2) {
-            props.setAlert('Password do not match', 'danger');
+            setAlertDispatch('Password do not match', 'danger');
         } else {
-            props.register({ name, email, password });
+            registerDispatch({ name, email, password });
         }
     };
 
@@ -96,8 +96,8 @@ const Register = ({ isAuthenticated, ...props }) => {
 };
 
 Register.propTypes = {
-    setAlert: PropTypes.func.isRequired,
-    register: PropTypes.func.isRequired,
+    setAlertDispatch: PropTypes.func.isRequired,
+    registerDispatch: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
 };
 
@@ -105,4 +105,7 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { setAlert, register })(Register);
+export default connect(mapStateToProps, {
+    setAlertDispatch: setAlert,
+    registerDispatch: register,
+})(Register);
