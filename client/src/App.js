@@ -7,6 +7,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
+import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
@@ -17,7 +18,7 @@ import CreateProfile from './components/profile-form/CreateProfile';
 import EditProfile from './components/profile-form/EditProfile';
 import AddExperience from './components/profile-form/AddExperience';
 import AddEducation from './components/profile-form/AddEducation';
-import PrivateRoute from './components/routing/PrivateRoute';
+import Profiles from './components/profiles/Profiles';
 
 import './App.css';
 
@@ -45,6 +46,11 @@ const App = () => {
                                 component={Register}
                             />
                             <Route exact path="/login" component={Login} />
+                            <Route
+                                exact
+                                path="/profiles"
+                                component={Profiles}
+                            />
                             <PrivateRoute
                                 exact
                                 path="/dashboard"
