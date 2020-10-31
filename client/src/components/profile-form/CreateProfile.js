@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -58,7 +59,7 @@ const CreateProfile = ({ createProfileDispatch, history }) => {
                     <select
                         name="status"
                         value={status}
-                        onBlur={(e) => onChange(e)}
+                        onChange={(e) => onChange(e)}
                     >
                         <option value="0">* Select Professional Status</option>
                         <option value="Developer">Developer</option>

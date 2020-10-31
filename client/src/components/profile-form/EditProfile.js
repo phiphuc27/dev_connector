@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-onchange */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -32,7 +34,7 @@ const EditProfile = ({
             website: loading || !profile.website ? '' : profile.website,
             location: loading || !profile.location ? '' : profile.location,
             status: loading || !profile.status ? '' : profile.status,
-            skills: loading || !profile.skills ? '' : profile.skills,
+            skills: loading || !profile.skills ? '' : profile.skills.join(),
             githubusername:
                 loading || !profile.githubusername
                     ? ''
@@ -44,7 +46,7 @@ const EditProfile = ({
             youtube: loading || !profile.youtube ? '' : profile.youtube,
             instagram: loading || !profile.instagram ? '' : profile.instagram,
         });
-    }, [loading, profile, getCurrentProfileDispatch]);
+    }, [loading, getCurrentProfileDispatch]);
 
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
@@ -73,7 +75,7 @@ const EditProfile = ({
 
     return (
         <>
-            <h1 className="large text-primary">Create Your Profile</h1>
+            <h1 className="large text-primary">Edit Your Profile</h1>
             <p className="lead">
                 <i className="fas fa-user" /> Let&rsquo;s get some information
                 to make your profile stand out
@@ -84,7 +86,7 @@ const EditProfile = ({
                     <select
                         name="status"
                         value={status}
-                        onBlur={(e) => onChange(e)}
+                        onChange={(e) => onChange(e)}
                     >
                         <option value="0">* Select Professional Status</option>
                         <option value="Developer">Developer</option>
